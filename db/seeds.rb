@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # ItemOrder.destroy_all
-# Order.destroy_all
+# Order.destroy_«all
 Item.destroy_all
 # Review.destroy_all
 User.destroy_all
@@ -51,3 +51,4 @@ merchant_3 = User.create!(name: "Danny Moron", address: "111 cool St", city: "Co
 #admin
 admin = User.create!(name: "Zeke Fleek", address: "23832 Harbor Ave", city: "Boulder", state: "CO", zip: "54239", email: "zekeefleeky@altavista.com", password: "feqnu", role: 2)
 
+««

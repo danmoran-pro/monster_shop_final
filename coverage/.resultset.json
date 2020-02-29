@@ -306,11 +306,11 @@
         "lines": [
           1,
           1,
-          2,
-          2,
-          2,
-          2,
-          2,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           null
         ]
@@ -334,7 +334,7 @@
           null,
           null,
           1,
-          127,
+          129,
           null,
           null,
           null,
@@ -362,11 +362,11 @@
         "lines": [
           1,
           1,
-          2,
-          2,
-          2,
-          2,
-          2,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           null
         ]
@@ -414,14 +414,14 @@
         "lines": [
           1,
           1,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           1,
@@ -436,14 +436,14 @@
           null,
           null,
           1,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           null
@@ -511,6 +511,8 @@
           1,
           1,
           1,
+          1,
+          null,
           1,
           1,
           null,
@@ -1003,22 +1005,43 @@
       },
       "/Users/daniels/turing/mod2/finals/monster_shop_final/spec/features/merchant/coupons/new_spec.rb": {
         "lines": [
-
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ]
       },
       "/Users/daniels/turing/mod2/finals/monster_shop_final/spec/features/merchant/coupons/show_spec.rb": {
         "lines": [
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null
+
         ]
       },
       "/Users/daniels/turing/mod2/finals/monster_shop_final/spec/features/merchant/dashboard_spec.rb": {
@@ -3285,8 +3308,8 @@
           1,
           null,
           1,
-          342,
-          342,
+          344,
+          344,
           null,
           null,
           1,
@@ -3298,7 +3321,7 @@
           null,
           null,
           1,
-          300,
+          302,
           null,
           null,
           1,
@@ -3740,7 +3763,7 @@
           null,
           null,
           1,
-          505,
+          507,
           null,
           null,
           1,
@@ -3748,11 +3771,11 @@
           null,
           null,
           1,
-          405,
+          412,
           null,
           null,
           1,
-          431,
+          433,
           null,
           null,
           1,
@@ -3760,7 +3783,7 @@
           null,
           null,
           1,
-          78,
+          80,
           null,
           null,
           1,
@@ -3958,45 +3981,11 @@
           null
         ]
       },
-      "/Users/daniels/turing/mod2/finals/monster_shop_final/app/controllers/merchant/dashboard_controller.rb": {
-        "lines": [
-          1,
-          1,
-          8,
-          null,
-          null
-        ]
-      },
-      "/Users/daniels/turing/mod2/finals/monster_shop_final/app/controllers/merchant/base_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/daniels/turing/mod2/finals/monster_shop_final/app/controllers/merchant/orders_controller.rb": {
-        "lines": [
-          1,
-          1,
-          9,
-          9,
-          null,
-          null,
-          1,
-          3,
-          3,
-          3,
-          3,
-          3,
-          null,
-          null
-        ]
-      },
       "/Users/daniels/turing/mod2/finals/monster_shop_final/app/controllers/merchant/items_controller.rb": {
         "lines": [
           1,
           1,
-          17,
+          18,
           null,
           null,
           1,
@@ -4052,6 +4041,54 @@
           null,
           1,
           4,
+          null,
+          null
+        ]
+      },
+      "/Users/daniels/turing/mod2/finals/monster_shop_final/app/controllers/merchant/base_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/daniels/turing/mod2/finals/monster_shop_final/app/controllers/merchant/discounts_controller.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/daniels/turing/mod2/finals/monster_shop_final/app/controllers/merchant/dashboard_controller.rb": {
+        "lines": [
+          1,
+          1,
+          8,
+          null,
+          null
+        ]
+      },
+      "/Users/daniels/turing/mod2/finals/monster_shop_final/app/controllers/merchant/orders_controller.rb": {
+        "lines": [
+          1,
+          1,
+          9,
+          9,
+          null,
+          null,
+          1,
+          3,
+          3,
+          3,
+          3,
+          3,
           null,
           null
         ]
@@ -4238,6 +4275,6 @@
         ]
       }
     },
-    "timestamp": 1582998052
+    "timestamp": 1583007822
   }
 }

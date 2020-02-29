@@ -1,0 +1,13 @@
+<h2>New Coupon</h2>
+<%= form_tag "/merchant/items/discounts" do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name %>
+
+  <%= label_tag :quanity %>
+  <%= number_field_tag(:quanity, nil, within: 1..100, :step => '1') %>
+  
+  <%= label_tag :percent_off %>
+  <%= number_field_tag(:percent_off, nil, within: 0.0..0.99, :step => '.01') %>
+
+  <%= submit_tag 'Create Discount' %>
+<% end %>
