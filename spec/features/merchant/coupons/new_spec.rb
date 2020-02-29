@@ -14,19 +14,27 @@ describe "as a admin merchant" do
       visit "/merchant/items"
       
       within "#item-#{@item_2.id}" do 
-        click_on "New Coupon"
+        click_button "New Discount"
       end
 
       expect(current_path).to eq("/merchant/items/#{@item_2.id}/discounts/new")
     end 
   end
+  describe "Can create a Discount" do
+    it " I see a link to create a new coupon for that item" do 
+      visit "/merchant/items/#{@item_2.id}/discounts/new"
+      
+      name = 'bulk20'
+      quantity = 20
+      percentage_off = 0.25
+
+      fill_in 'Name', with: name
+      fill_in 'Quantity', with: quantity
+      fill_in 'percentage_off', with: percentage_off
+
+      # click_button 'Create Discount'
+
+      # expect(current_path).to eq(merchant_item_discounts_path)
+    end 
+  end
 end
-
-
-# As a visitor,
-# When I visit an item's show page,
-# I see a list of reviews for that item
-# Each review will have:
-# - title
-# - content of the review
-# - rating (1 to 5)

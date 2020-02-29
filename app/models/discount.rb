@@ -3,8 +3,8 @@ class Discount < ApplicationRecord
   belongs_to :item
   
   # has_many :orders
-  validates_presence_of :name, :percent_off, :quanity,
+  validates_presence_of :name, :percent_off, :quantity,
 
-  validates_numericality_of :quanity
-                            :percent_off, greater_than: 0, less_than: 1
+  validates_numericality_of :quantity
+                            :percentage_off, greater_than: 0, less_than: 1
 end
