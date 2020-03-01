@@ -322,6 +322,7 @@
           1,
           1,
           1,
+          1,
           null,
           1,
           null,
@@ -373,6 +374,7 @@
       },
       "/Users/daniels/turing/mod2/finals/monster_shop_final/app/models/merchant.rb": {
         "lines": [
+          1,
           1,
           1,
           1,
@@ -1038,15 +1040,6 @@
           1,
           1,
           1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           null,
           null,
@@ -3369,12 +3362,50 @@
           null
         ]
       },
+      "/Users/daniels/turing/mod2/finals/monster_shop_final/spec/models/discount_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null,
+          null,
+          2,
+          2,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/daniels/turing/mod2/finals/monster_shop_final/app/models/discount.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/daniels/turing/mod2/finals/monster_shop_final/spec/models/item_spec.rb": {
         "lines": [
           1,
           null,
           1,
           1,
+          2,
           2,
           2,
           2,
@@ -3456,6 +3487,7 @@
           null,
           1,
           1,
+          2,
           2,
           2,
           2,
@@ -3788,7 +3820,7 @@
           null,
           null,
           1,
-          415,
+          414,
           null,
           null,
           1,
@@ -3800,7 +3832,7 @@
           null,
           null,
           1,
-          82,
+          81,
           null,
           null,
           1,
@@ -4296,6 +4328,6 @@
         ]
       }
     },
-    "timestamp": 1583013705
+    "timestamp": 1583093641
   }
 }
