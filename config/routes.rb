@@ -35,10 +35,10 @@ Rails.application.routes.draw do
 
   namespace :merchant do
     get '/', to: 'dashboard#index', as: :dashboard
-    resources :discounts, only: [:new, :create, :index]
+    resources :discounts, only: [:index, :new]
     resources :orders, only: :show
     resources :items, only: [:index, :new, :create, :edit, :update, :destroy] do
-      resources :discounts, only: [:new, :create] 
+      resources :discounts, only: [:new, :create, :edit, :update] 
     end
     put '/items/:id/change_status', to: 'items#change_status'
     get '/orders/:id/fulfill/:order_item_id', to: 'orders#fulfill'
