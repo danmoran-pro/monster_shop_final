@@ -9,9 +9,9 @@ describe "as a admin merchant" do
     @user = create(:merchant_admin, merchant: @merchant_1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end 
-  describe "When I visit an item's show page" do
-    it " I see a link to create a new coupon for that item" do 
-      visit "/merchant/items"
+  describe "When I visit an items index page" do
+    it " I see a link to create a new discount for that item" do 
+      visit merchant_items_path(@merchant_1)
       
       within "#item-#{@item_2.id}" do 
         click_button "New Discount"
@@ -20,8 +20,8 @@ describe "as a admin merchant" do
       expect(current_path).to eq("/merchant/items/#{@item_2.id}/discounts/new")
     end 
   end
-  describe "Can create a Discount" do
-    it " I see a link to create a new coupon for that item" do 
+  describe "Can create a Discount from merchant items index" do
+    it " I see a link to create a new discount for that item" do 
       visit "/merchant/items/#{@item_2.id}/discounts/new"
       
       name = 'bulk20'
@@ -32,9 +32,34 @@ describe "as a admin merchant" do
       fill_in 'Quantity', with: quantity
       fill_in 'percentage_off', with: percentage_off
 
-      # click_button 'Create Discount'
+      click_button 'Create Discount'
 
-      # expect(current_path).to eq(merchant_item_discounts_path)
+      expect(current_path).to eq(merchant_items_path(@merchant_1))
+      within "#item-#{@item_2.id}" do 
+        expect(page).to have_button("New Discount")
+        expect(page).to have_content("Discount: bulk20")
+      end
+    end 
+  end
+  describe "Can NOT create a Discount from an merchants dashboard without selecting an item " do
+    it " I see a link to see all my discounts" do 
+      discount_1 = @item_2.discounts.create!(name: "bulk20", quantity: 20, percentage_off: 0.25, merchant_id: @merchant_1.id )
+      
+      visit merchant_dashboard_path(@merchant_1)
+        
+      click_button "My Discounts"
+
+      expect(current_path).to eq("/merchant/discounts")
+  
+      within "#discount-#{discount_1.id}" do 
+        expect(page).to have_content(discount_1.name)
+        expect(page).to have_content(discount_1.quantity)
+        expect(page).to have_content(discount_1.percentage_off)
+      end 
+
+      click_button "New Discount"
+
+      expect(page).to have_content("Please select an item to create a bulk discount on")
     end 
   end
 end

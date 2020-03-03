@@ -1,0 +1,11 @@
+<h1>My Discounts</h1>
+
+<%= button_to 'New Discount', '/merchant/discounts/new', method: :get %>
+
+<% @discounts.each do |discount|%>
+  <section id='discount-<%=discount.id%>'>
+    <p><%= discount.name %></p>
+    <p><%= discount.quantity %></p>
+    <p><%= discount.percentage_off %></p>
+  </section>
+<% end %>

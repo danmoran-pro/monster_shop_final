@@ -18,6 +18,11 @@
     <p>Sold by: <%= link_to item.merchant.name, "/merchants/#{item.merchant_id}" %>, Inventory: <%= item.inventory %></p>
     <p><%= item.active ? "Active" : "Inactive" %></p>
     <% if current_merchant_user? %>
+      <% if item.discounts%>
+        <% item.discounts.each do |discount|%>
+         Discount: <%= link_to "#{discount.name}", "/merchant/items/#{item.id}/discounts/#{discount.id}/edit" %>
+        <%end %>
+      <%end %>
         <%= button_to 'New Discount', "/merchant/items/#{item.id}/discounts/new", method: :get %>
       <% if item.active? %>
         <%= button_to 'Inactivate', "/merchant/items/#{item.id}/change_status", method: :put %>
