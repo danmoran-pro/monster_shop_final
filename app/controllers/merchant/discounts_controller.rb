@@ -40,6 +40,11 @@ class Merchant::DiscountsController < Merchant::BaseController
     end
   end 
 
+  def destroy
+    Discount.destroy(params[:id])
+    redirect_to merchant_discounts_path
+  end
+
   private
     def discounts_params
       params.permit(:name, :quantity, :percentage_off)

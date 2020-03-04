@@ -11,23 +11,29 @@ describe "as a admin merchant" do
     @user = create(:merchant_admin, merchant: @merchant_1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end 
-  describe "When I visit a merchant dashboard " do
-    it " I see a link to  view all discounts for that merchant" do 
-      visit merchant_dashboard_path
+  describe "When I visit an discount's index page" do
+    it " I see a link that deletes that discount next to each discount" do 
 
-      click_button 'My Discounts'
+      visit "/merchant/discounts"
       
       within "#discount-#{@discount_1.id}" do 
         expect(page).to have_content(@discount_1.name)
         expect(page).to have_content(@discount_1.quantity)
         expect(page).to have_content(@discount_1.percentage_off)
+        expect(page).to have_button('Delete Discount')  
       end 
-
+      
       within "#discount-#{@discount_2.id}" do 
         expect(page).to have_content(@discount_2.name)
         expect(page).to have_content(@discount_2.quantity)
         expect(page).to have_content(@discount_2.percentage_off)
-      end 
+        click_button('Delete Discount')  
+      end
+      
+      expect(current_path).to eq("/merchant/discounts")
+
+      expect(page).to have_content(@discount_1.name)
+      expect(page).to_not have_content(@discount_2.name)
     end
   end
 end 
