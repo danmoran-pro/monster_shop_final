@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # ItemOrder.destroy_all
-# Order.destroy_all
+# Order.destroy_«all
 Item.destroy_all
 # Review.destroy_all
 User.destroy_all
@@ -44,10 +44,9 @@ item_15 = merchant_3.items.create(name: "Nintendo 64", description: "Best gaming
 user_1 = User.create!(name: "Benji Wolf", address: "123 Heart Pl", city: "Reno", state: "NV", zip: "19443", email: "mrcool@gmail.com", password: "rh23489", role: 0)
 
 #merchant_admin
-merchant_2 = User.create!(name: "Dan Moron", address: "333 Uncool St", city: "Colorado Springs", state: "CO", zip: "54239", email: "danny@myspace.com", password: "t4389", role: 1, merchant: merchant_1)
-merchant_2 = User.create!(name: "Daniel Moron", address: "222 uncool St", city: "Colorado Springs", state: "CO", zip: "54239", email: "danny@limewire.com", password: "t4389", role: 1, merchant: merchant_2)
-merchant_3 = User.create!(name: "Danny Moron", address: "111 cool St", city: "Colorado Springs", state: "CO", zip: "54239", email: "uncannydanny@4realz.com", password: "t4389", role: 1, merchant: merchant_3)
+merchant_admin_1 = User.create!(name: "Dan Moron", address: "333 Uncool St", city: "Colorado Springs", state: "CO", zip: "54239", email: "danny@myspace.com", password: "t4389", role: 1, merchant: merchant_1)
+merchant_admin_2 = User.create!(name: "Daniel Moron", address: "222 uncool St", city: "Colorado Springs", state: "CO", zip: "54239", email: "danny@limewire.com", password: "t4389", role: 1, merchant: merchant_2)
+merchant_admin_3 = User.create!(name: "Danny Moron", address: "111 cool St", city: "Colorado Springs", state: "CO", zip: "54239", email: "uncannydanny@4realz.com", password: "t4389", role: 1, merchant: merchant_3)
 
 #admin
 admin = User.create!(name: "Zeke Fleek", address: "23832 Harbor Ave", city: "Boulder", state: "CO", zip: "54239", email: "zekeefleeky@altavista.com", password: "feqnu", role: 2)
-
