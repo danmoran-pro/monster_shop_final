@@ -30,4 +30,9 @@ class Item < ApplicationRecord
   def average_rating
     reviews.average(:rating)
   end
+
+  def discounted_price
+    discount = (discounts.first.percentage_off.to_f * price)
+    price - discount
+  end 
 end
