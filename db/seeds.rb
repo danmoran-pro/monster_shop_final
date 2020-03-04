@@ -50,3 +50,6 @@ merchant_admin_3 = User.create!(name: "Danny Moron", address: "111 cool St", cit
 
 #admin
 admin = User.create!(name: "Zeke Fleek", address: "23832 Harbor Ave", city: "Boulder", state: "CO", zip: "54239", email: "zekeefleeky@altavista.com", password: "feqnu", role: 2)
+
+#discoutn 
+discount_1 = item_1.discounts.create!(name: "bulk20", quantity: 20, percentage_off: 0.05, merchant_id: merchant_1.id )
