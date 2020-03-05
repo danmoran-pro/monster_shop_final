@@ -30,49 +30,60 @@ describe "as a admin merchant" do
   
     expect(page).to have_content('Cart: 19')
     expect(page).to have_content("Subtotal: $95.00")
+    expect(page).to have_content("Total: $95.00")
   
     click_button('More of This!')
   
     expect(page).to have_content('Cart: 20')
     expect(page).to have_content('Price: $4.75')
     expect(page).to have_content("Subtotal: $95.00")
-    expect(page).to have_content("Total: $100.00")
-    save_and_open_page
-    expect(page).to have_content("Discounted Total: $95.00")
+    expect(page).to have_content("Total: $95.00")
   end 
   
-  # it "greater discount is applied after meething threshold " do 
-  #   discount_2 = @item_1.discounts.create!(name: "bulk05", quantity: 2, percentage_off: 0.05, merchant_id: @merchant_1.id )
-  #   discount_3 = @item_1.discounts.create!(name: "bulk10", quantity: 3, percentage_off: 0.1, merchant_id: @merchant_1.id )
+  it "greater discount is applied after meething threshold " do 
+    discount_2 = @item_1.discounts.create!(name: "bulk05", quantity: 20, percentage_off: 0.05, merchant_id: @merchant_1.id )
+    discount_3 = @item_1.discounts.create!(name: "bulk10", quantity: 30, percentage_off: 0.1, merchant_id: @merchant_1.id )
     
-  #   visit item_path(@item_1)
-  #   click_button 'Add to Cart'
+    visit item_path(@item_1)
+    click_button 'Add to Cart'
     
-  #   visit '/cart'
-  #   save_and_open_page
+    visit '/cart'
     
-  #   1.times do
-  #     click_button('More of This!')
-  #   end
+    19.times do
+      click_button('More of This!')
+    end
     
-  #   save_and_open_page
-  #   # expect(page).to have_content('Cart: 20')
-  #   # expect(page).to have_content('Price: $4.75')
-  #   # expect(page).to have_content("Subtotal: $95.00")
-  #   # expect(page).to have_content("Total: $100.00")
-  #   # expect(page).to have_content("Discounted Total: $95.00")
+    expect(page).to have_content('Cart: 20')
+    expect(page).to have_content('Price: $4.75')
+    expect(page).to have_content("Subtotal: $95.00")
+    expect(page).to have_content("Total: $95.00")
     
-  #   1.times do
-  #     click_button('More of This!')
-  #   end
+    10.times do
+      click_button('More of This!')
+    end
     
-  #   # expect(page).to have_content('Cart: 30')
-  #   save_and_open_page
-  #   # expect(page).to have_content('Price: $4.75') #this should be a smaller number due to bigger percentage
-  #   # expect(page).to have_content("Subtotal: $135.00")
-  #   # expect(page).to have_content("Total: $150.00")
-  #   # expect(page).to have_content("Discounted Total: $135.00")
+    expect(page).to have_content('Cart: 30')
     
-  # end 
+    expect(page).to have_content('Price: $4.50') 
+    expect(page).to have_content("Subtotal: $135.00")
+    expect(page).to have_content("Total: $135.00")
+    
+    visit item_path(@item_2)
+    click_button 'Add to Cart'
+
+    visit '/cart'
+    
+    within "#item-#{@item_1.id}" do 
+      expect(page).to have_content('Price: $4.50') 
+      expect(page).to have_content("Subtotal: $135.00")
+    end 
+    
+    within "#item-#{@item_2.id}" do 
+      expect(page).to have_content('Price: $15.00') 
+      expect(page).to have_content("Subtotal: $15.00")
+    end 
+
+    expect(page).to have_content("Total: $150.00")
+  end 
 end 
 
