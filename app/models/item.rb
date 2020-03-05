@@ -40,5 +40,3 @@ class Item < ApplicationRecord
     end
   end 
 end
-
-# discount = (self.discounts.order(percentage_off: :desc)).first.percentage_off.to_f * price
