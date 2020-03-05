@@ -16,11 +16,9 @@
         <p>Subtotal: <%= number_to_currency(cart.subtotal_of(item.id)) %></p>
       <% elsif cart.greatest_discount(item, cart.count_of(item.id))  != [] %>
         <p>Price: <%= number_to_currency(item.discounted_price(cart.count_of(item.id))) %></p>
-        poop
         <p>Subtotal: <%= number_to_currency(cart.discounted_subtotal_of(item.id,cart.count_of(item.id))) %></p>
       <% else %>
         <p>Price: <%= number_to_currency(item.price) %></p>
-        poop1
         <p>Subtotal: <%= number_to_currency(cart.subtotal_of(item.id)) %></p>
       <% end %>
       <p>Quantity: <%= cart.count_of(item.id) %></p>
