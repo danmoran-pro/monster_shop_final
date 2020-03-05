@@ -20,7 +20,7 @@ merchant_3 = Merchant.create(name: "leggos Not Eggos", address: '654 Leggo St.',
 
 
 #bike_shop items
-item_1 = merchant_1.items.create!(name: "Tire", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12, active: true )
+item_1 = merchant_1.items.create!(name: "Tire", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 40, active: true )
 item_2 = merchant_1.items.create!(name: "High Roller Ball", description: "Stays on surface", price: 100, image: "https://www.rei.com/media/3cda9ce5-420c-47d2-8095-bdc6ed84923c?size=784x588", inventory: 12, active: true )
 item_3 = merchant_1.items.create!(name: "Gnawt-A-Rock", description: "Holds treats", price: 100, image: "https://www.rei.com/media/252b0d74-f3cc-4b9d-8a7f-596440dfcc6c?size=784x588", inventory: 12, active: true )
 item_4 = merchant_1.items.create!(name: "Gnawt-A-Stick", description: "Stays upright", price: 100, image: "https://www.rei.com/media/40d8402b-8415-4cab-a9fd-eba14298527d?size=784x588", inventory: 12, active: true )
@@ -51,5 +51,6 @@ merchant_admin_3 = User.create!(name: "Danny Moron", address: "111 cool St", cit
 #admin
 admin = User.create!(name: "Zeke Fleek", address: "23832 Harbor Ave", city: "Boulder", state: "CO", zip: "54239", email: "zekeefleeky@altavista.com", password: "feqnu", role: 2)
 
-#discoutn 
+#discount 
 discount_1 = item_1.discounts.create!(name: "bulk20", quantity: 20, percentage_off: 0.05, merchant_id: merchant_1.id )
+discount_2 = item_1.discounts.create!(name: "bulk30", quantity: 30, percentage_off: 0.10, merchant_id: merchant_1.id )

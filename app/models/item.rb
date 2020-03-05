@@ -31,8 +31,14 @@ class Item < ApplicationRecord
     reviews.average(:rating)
   end
 
-  def discounted_price
-    discount = (discounts.first.percentage_off.to_f * price)
-    price - discount
+  def discounted_price(quantity)
+    if self.discounts.where("quantity <= ?", quantity).order("percentage_off DESC").limit(1) != []
+      discount = self.discounts.where("quantity <= ?", quantity).order("percentage_off DESC").limit(1).first.percentage_off.to_f * price
+      price - discount
+    else 
+      price
+    end
   end 
 end
+
+# discount = (self.discounts.order(percentage_off: :desc)).first.percentage_off.to_f * price

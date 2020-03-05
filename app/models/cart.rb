@@ -32,6 +32,23 @@ class Cart
     grand_total
   end
 
+  def grand_discounted_total
+    grand_total = 0.0
+    @contents.each do |item_id, quantity|
+      item = Item.find(item_id)
+      if item.discounts.nil?
+        grand_total += item.price * quantity
+      else  
+        grand_total += item.discounted_price(quantity) * quantity
+      end 
+    end
+    grand_total
+  end
+
+  def greatest_discount(item, quantity)
+    item.discounts.where("quantity <= ?", quantity)
+  end 
+
   def count_of(item_id)
     @contents[item_id.to_s]
   end
@@ -39,8 +56,9 @@ class Cart
   def subtotal_of(item_id)
     @contents[item_id.to_s] * Item.find(item_id).price
   end
-  def discounted_subtotal_of(item_id)
-    @contents[item_id.to_s] * Item.find(item_id).discounted_price
+
+  def discounted_subtotal_of(item_id, quantity)
+    Item.find(item_id).discounted_price(quantity) * quantity
   end
 
 
