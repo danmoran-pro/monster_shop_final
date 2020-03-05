@@ -78,12 +78,16 @@ RSpec.describe 'Create Order' do
     before :each do
       @merchant_1 = Merchant.create(name: "leggos Not Eggos", address: '654 Leggo St.', city: 'Denver', state: 'CO', zip: 80202)
       @item_1 = @merchant_1.items.create(name: "1989 Batmobile", description: "Original Battmovile", price: 5, image: 'https://www.bigw.com.au/medias/sys_master/images/images/h1f/h87/13909151023134.jpg', inventory: 60, active: true )
+      @item_2 = @merchant_1.items.create(name: "Olaf", description: "The snowman that can talk", price: 15, image: 'https://www.thebrickfan.com/wp-content/uploads/2019/10/Olafs-Traveling-Sleigh-40361.jpg', inventory: 35, active: true )
       @discount_1 = @item_1.discounts.create!(name: "bulk20", quantity: 20, percentage_off: 0.05, merchant_id: @merchant_1.id )
       @user = User.create!(name: 'Danny', address: '123 Main St', city: 'Denver', state: 'CO', zip: 80218, email: 'danny@example.com', password: 'securepassword')
       @order_1 = @user.orders.create!(status: "packaged")
       @order_2 = @user.orders.create!(status: "packaged")
+      @order_3 = @user.orders.create!(status: "packaged")
       @order_item_1 = @order_1.order_items.create!(item: @item_1, price: @item_1.price, quantity: 19, fulfilled: true)
       @order_item_2 = @order_2.order_items.create!(item: @item_1, price: 4.75, quantity: 20, fulfilled: true)
+      @order_item_3 = @order_3.order_items.create!(item: @item_1, price: 4.75, quantity: 20, fulfilled: true)
+      @order_item_4 = @order_3.order_items.create!(item: @item_1, price: @item_2.price, quantity: 1, fulfilled: true)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     end
@@ -112,33 +116,33 @@ RSpec.describe 'Create Order' do
 
     end
 
-    # it "see discounted price within show page" do 
+    igst "see discounted price within show page" do 
+      visit "/profile/orders/#{@order_3.id}"
 
 
+      expect(page).to have_content(@order_3.id)
+      expect(page).to have_content("Created On: #{@order_3.created_at}")
+      expect(page).to have_content("Updated On: #{@order_3.updated_at}")
+      expect(page).to have_content("Status: #{@order_3.status}")
+      expect(page).to have_content("#{@order_3.count_of_items} items")
+      expect(page).to have_content("Total: #{number_to_currency(@order_3.grand_total)}")
+      
+      within "#order-item-#{@order_item_3.id}" do
+        expect(page).to have_link(@order_item_3.item.name)
+        expect(page).to have_content(@order_item_3.item.description)
+        expect(page).to have_content(@order_item_3.quantity)
+        expect(page).to have_content(@order_item_3.price)
+        expect(page).to have_content(@order_item_3.subtotal)
+      end
 
-
-    # expect(page).to have_content(@order_2.id)
-    # expect(page).to have_content("Created On: #{@order_2.created_at}")
-    # expect(page).to have_content("Updated On: #{@order_2.updated_at}")
-    # expect(page).to have_content("Status: #{@order_2.status}")
-    # expect(page).to have_content("#{@order_2.count_of_items} items")
-    # expect(page).to have_content("Total: #{number_to_currency(@order_2.grand_total)}")
-    
-    #   within "#order-item-#{@order_item_2.id}" do
-    #     expect(page).to have_link(@order_item_2.item.name)
-    #     expect(page).to have_content(@order_item_2.item.description)
-    #     expect(page).to have_content(@order_item_2.quantity)
-    #     expect(page).to have_content(@order_item_2.price)
-    #     expect(page).to have_content(@order_item_2.subtotal)
-    #   end
-
-    #   within "#order-item-#{@order_item_3.id}" do
-    #     expect(page).to have_link(@order_item_3.item.name)
-    #     expect(page).to have_content(@order_item_3.item.description)
-    #     expect(page).to have_content(@order_item_3.quantity)
-    #     expect(page).to have_content(@order_item_3.price)
-    #     expect(page).to have_content(@order_item_3.subtotal)
-    #   end
-    # end 
+      within "#order-item-#{@order_item_4.id}" do
+        expect(page).to have_link(@order_item_4.item.name)
+        expect(page).to have_content(@order_item_4.item.description)
+        expect(page).to have_content(@order_item_4.quantity)
+        expect(page).to have_content(@order_item_4.price)
+        expect(page).to have_content(@order_item_4.subtotal)
+      end
+      save_and_open_page
+    end 
   end
 end
