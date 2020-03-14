@@ -15,7 +15,6 @@ describe "as a admin merchant" do
     it " I see a link that deletes that discount next to each discount" do 
 
       visit "/merchant/discounts"
-      
       within "#discount-#{@discount_1.id}" do 
         expect(page).to have_content(@discount_1.name)
         expect(page).to have_content(@discount_1.quantity)

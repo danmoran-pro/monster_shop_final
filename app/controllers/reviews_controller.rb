@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     @item = Item.find(params[:item_id])
     review = @item.reviews.new(review_params)
     if review.save
-      redirect_to item_path(@item)
+      redirect_to "/items/#{@item.id}"
     else
       generate_flash(review)
       render :new
@@ -20,14 +20,17 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
+    @item = Item.find(@review.item_id)
     @review.update(review_params)
-    redirect_to item_path(@review.item)
+    redirect_to "/items/#{@item.id}"
   end
 
   def destroy
     review = Review.find(params[:id])
+    item = Item.find(review.item_id)
+
     review.destroy
-    redirect_to(item_path(review.item))
+    redirect_to "/items/#{item.id}"
   end
 
   private

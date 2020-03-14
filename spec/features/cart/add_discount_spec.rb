@@ -17,7 +17,7 @@ describe "as a admin merchant" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end 
   it "discount is applied after meething threshold " do 
-    visit item_path(@item_1)
+    visit "/items/#{@item_1.id}"
     click_button 'Add to Cart'
   
     visit '/cart'
@@ -44,7 +44,7 @@ describe "as a admin merchant" do
     discount_2 = @item_1.discounts.create!(name: "bulk05", quantity: 20, percentage_off: 0.05, merchant_id: @merchant_1.id )
     discount_3 = @item_1.discounts.create!(name: "bulk10", quantity: 30, percentage_off: 0.1, merchant_id: @merchant_1.id )
     
-    visit item_path(@item_1)
+    visit "/items/#{@item_1.id}"
     click_button 'Add to Cart'
     
     visit '/cart'
@@ -68,7 +68,7 @@ describe "as a admin merchant" do
     expect(page).to have_content("Subtotal: $135.00")
     expect(page).to have_content("Total: $135.00")
     
-    visit item_path(@item_2)
+    visit "/items/#{@item_2.id}"
     click_button 'Add to Cart'
 
     visit '/cart'

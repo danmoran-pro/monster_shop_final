@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
   def login_redirect(user)
     session[:user_id] = user.id
     if current_merchant_user?
-      redirect_to merchant_dashboard_path
+      redirect_to '/merchant'
     elsif current_admin?
       redirect_to admin_dashboard_path
     else
